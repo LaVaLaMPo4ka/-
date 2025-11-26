@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --glow-about:  rgba(181,123,255,0.28);
+  --glow-rules:  rgba(246,200,76,0.22);
+  --glow-features: rgba(87,240,255,0.22);
+  --glow-donat: rgba(255,138,91,0.22);
+  --glow-crafts: rgba(168,85,247,0.22);
+}
+
+body{ margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:#000; color:#e6e6e6; min-height:100vh; }
+
+.glass{ background: rgba(0,0,0,0.58); border-radius:16px; box-shadow:0 6px 30px rgba(0,0,0,0.25); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border:1px solid rgba(255,255,255,0.04); }
+
+.btn{ @apply inline-flex items-center gap-2 px-4 py-2 rounded-2xl font-semibold transition-transform transform; }
+.btn-accent{ background: linear-gradient(90deg, rgba(246,200,76,0.14), transparent 60%); border:1px solid rgba(246,200,76,0.22); color:white; }
+.btn-neon{ background: linear-gradient(90deg, rgba(87,240,255,0.08), rgba(181,123,255,0.06)); border:1px solid rgba(87,240,255,0.12); color:white; }
+.btn-discord-large{ @apply text-xl px-6 py-3 font-bold; border-radius:18px; }
+
+/* Nav link glow */
+.nav-link{
+  position:relative;
+  padding:6px 8px;
+  border-radius:8px;
+  transition: transform .26s ease, box-shadow .26s ease, color .26s ease;
+  color:inherit;
+  text-decoration:none;
+  display:inline-block;
+}
+.nav-link::after{ display:none; }
+.nav-link:hover{
+  transform: translateY(-4px);
+  color: white;
+  text-shadow: 0 6px 18px rgba(255,255,255,0.04);
+}
+.nav-link[data-glow="about"]:hover::after{ width:120%; height:120%; background: radial-gradient(circle, var(--glow-about), transparent 40%); opacity:1; box-shadow:0 18px 60px var(--glow-about); }
+.nav-link[data-glow="rules"]:hover::after{ width:120%; height:120%; background: radial-gradient(circle, var(--glow-rules), transparent 40%); opacity:1; box-shadow:0 18px 60px var(--glow-rules); }
+.nav-link[data-glow="features"]:hover::after{ width:120%; height:120%; background: radial-gradient(circle, var(--glow-features), transparent 40%); opacity:1; box-shadow:0 18px 60px var(--glow-features); }
+.nav-link[data-glow="donat"]:hover::after{ width:120%; height:120%; background: radial-gradient(circle, var(--glow-donat), transparent 40%); opacity:1; box-shadow:0 18px 60px var(--glow-donat); }
+.nav-link[data-glow="crafts"]:hover::after{ width:120%; height:120%; background: radial-gradient(circle, var(--glow-crafts), transparent 40%); opacity:1; box-shadow:0 18px 60px var(--glow-crafts); }
+
+/* Global appear animation */
+.appear { opacity:0; transform: translateY(8px); transition: opacity .6s ease, transform .6s ease; }
+.appear.show { opacity:1; transform: translateY(0); }
+
+/* Card hover pop */
+.card {
+  transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s cubic-bezier(.2,.9,.2,1);
+  will-change: transform;
+}
+.card:hover{
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 30px 80px rgba(146,85,255,0.12);
+}
+
+/* Donat image show full */
+.card-img { width:100%; height:auto; max-height:320px; object-fit: contain; object-position:center; border-radius:8px; }
+
+/* Special purple glow on hover for donat/crafts/features cards */
+.card-glow { transition: box-shadow .28s ease, transform .28s ease; }
+.card-glow:hover { box-shadow: 0 30px 80px rgba(168,85,247,0.16); transform: translateY(-10px) scale(1.04); }
+
+
+
+/* Softer nav glow using box-shadow */
+.nav-link{ transition: box-shadow .35s ease, transform .25s ease, color .25s ease; }
+.nav-link[data-glow="about"]:hover{ box-shadow: 0 12px 40px rgba(181,123,255,0.14), 0 4px 12px rgba(181,123,255,0.06); }
+.nav-link[data-glow="rules"]:hover{ box-shadow: 0 12px 40px rgba(246,200,76,0.12), 0 4px 12px rgba(246,200,76,0.04); }
+.nav-link[data-glow="features"]:hover{ box-shadow: 0 12px 40px rgba(87,240,255,0.12), 0 4px 12px rgba(87,240,255,0.04); }
+.nav-link[data-glow="donat"]:hover{ box-shadow: 0 12px 40px rgba(255,138,91,0.12), 0 4px 12px rgba(255,138,91,0.04); }
+.nav-link[data-glow="crafts"]:hover{ box-shadow: 0 12px 40px rgba(168,85,247,0.12), 0 4px 12px rgba(168,85,247,0.04); }
+
+/* Discord button glow */
+.btn-accent{ transition: box-shadow .25s ease, transform .18s ease; }
+.btn-accent:hover{ transform: translateY(-3px); box-shadow: 0 18px 50px rgba(246,200,76,0.12); }
